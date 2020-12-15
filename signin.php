@@ -24,7 +24,13 @@
        <img src="img\flooop.png" height="100" width="100">
 </div>
 <div class="container">
-
+       <div class="input-field col s12">
+        <form action="auth.php" method="post">
+            Email: <input type="email" name="email" required="required"><br>
+            Password: <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"><br>
+            <input type="submit" class="btn">
+        </form>
+       </div>
 </div>
 
 </body>
