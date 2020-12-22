@@ -115,14 +115,14 @@ $is_admin = false;
 			echo "<tr align='left'".(($colorVar%2==0)?"style='background-color: #d1d1d1'":"").">";
 
 			echo 	"<td align='center'><a style='color: grey; text-decoration: underline;' 
-						href='userProfile.php?id=". $row['id'] ."'>". $row['id'] ."</a></td>
+						href='profile.php?id=". $row['id'] ."'>". $row['id'] ."</a></td>
 					<td>". $row['first_name'] ."</td>
 					<td>". $row['last_name'] ."</td>
 					<td>". $row['email'] ."</td>";
 			if($is_admin)
 				echo "<td>". $row['password'] ."</td>";
 			
-			$result_role = mysqli_query($conn, "SELECT title FROM roles WHERE id='". $row['role_id']. "';");
+			$result_role = mysqli_query($conn, "SELECT title FROM roles WHERE id='". $row['id']. "';");
 			$row_role = mysqli_fetch_array($result_role);
 			if(is_array($row_role))
 			{
@@ -145,8 +145,15 @@ $is_admin = false;
 	if($is_admin==true)
 	{
 		echo	"<br>
-				<form action='addUAdmin.php' method='post'>
+				<form action='signup.php' method='post'>
 					<input type='submit' class='btn' value='Add User'>
+				</form>";
+	}
+	if(isset($_SESSION['email']) && isset($_SESSION['password']))
+	{
+		echo	"<br>
+				<form action='logOut.php' method='post'>
+					<input type='submit' class='btn' value='Log Out'>
 				</form>";
 	}
 
